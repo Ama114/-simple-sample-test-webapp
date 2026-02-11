@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-romantic-bg via-romantic-dark to-romantic-purple/30 min-h-screen font-sans overflow-x-hidden text-romantic-light;
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-romantic-dark/40 backdrop-blur-xl backdrop-saturate-150 border border-romantic-pink/30 shadow-2xl shadow-romantic-pink/20 rounded-3xl;
+  }
+
+  .glass-button {
+    @apply bg-romantic-purple/30 backdrop-blur-md hover:bg-romantic-purple/50 transition-all duration-300 border border-romantic-pink/40 shadow-lg hover:shadow-romantic-pink/30;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-romantic-pink via-romantic-accent to-romantic-light bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+}
