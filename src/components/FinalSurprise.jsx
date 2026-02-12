@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Gift, X, Sparkles } from 'lucide-react'
+import { Gift, X, Sparkles, Heart } from 'lucide-react'
 import Confetti from 'react-confetti'
 import { useWindowSize } from '../hooks/useWindowSize'
 
@@ -8,8 +8,42 @@ const FinalSurprise = () => {
     const [showSurprise, setShowSurprise] = useState(false)
     const { width, height } = useWindowSize()
 
+    // Floating background hearts
+    const floatingHearts = Array.from({ length: 15 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100, // Random X position 0-100%
+        scale: 0.5 + Math.random() * 1, // Random scale 0.5-1.5
+        duration: 10 + Math.random() * 20, // Random duration 10-30s
+        delay: Math.random() * 5, // Random delay
+    }))
+
     return (
-        <section className="py-20 px-4 min-h-screen flex items-center justify-center relative">
+        <section className="py-20 px-4 min-h-screen flex items-center justify-center relative overflow-hidden">
+            {/* Background Floating Hearts */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                {floatingHearts.map((heart) => (
+                    <motion.div
+                        key={heart.id}
+                        initial={{ y: '110vh', x: `${heart.x}vw`, opacity: 0 }}
+                        animate={{
+                            y: '-10vh',
+                            opacity: [0, 0.8, 0],
+                            rotate: [0, 45, -45, 0]
+                        }}
+                        transition={{
+                            duration: heart.duration,
+                            delay: heart.delay,
+                            repeat: Infinity,
+                            ease: "linear"
+                        }}
+                        className="absolute"
+                        style={{ scale: heart.scale }}
+                    >
+                        <Heart className="text-romantic-pink/20 fill-romantic-pink/10 w-12 h-12" />
+                    </motion.div>
+                ))}
+            </div>
+
             {showSurprise && (
                 <Confetti
                     width={width}
@@ -46,15 +80,22 @@ const FinalSurprise = () => {
                             <motion.div
                                 className="glass-button px-12 py-6 rounded-3xl inline-flex items-center gap-3"
                                 animate={{
+                                    scale: [1, 1.02, 1],
                                     boxShadow: [
                                         '0 0 20px rgba(212, 173, 252, 0.3)',
                                         '0 0 40px rgba(212, 173, 252, 0.6)',
                                         '0 0 20px rgba(212, 173, 252, 0.3)',
                                     ],
                                 }}
-                                transition={{ duration: 2, repeat: Infinity }}
+                                transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    scale: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+                                }}
                             >
-                                <Gift className="w-8 h-8 text-romantic-pink" />
+                                <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ duration: 2, repeat: Infinity }}>
+                                    <Gift className="w-8 h-8 text-romantic-pink" />
+                                </motion.div>
                                 <span className="text-2xl font-semibold text-romantic-light">
                                     Open My Heart 💝
                                 </span>
@@ -102,31 +143,40 @@ const FinalSurprise = () => {
                             </motion.div>
 
                             <motion.h3
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.5 }}
                                 className="text-3xl md:text-5xl font-handwritten text-gradient mb-6"
                             >
                                 Will You Be My Valentine? 💕
                             </motion.h3>
 
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.8 }}
-                                className="space-y-4 text-lg md:text-xl text-romantic-light/90 leading-relaxed"
-                            >
-                                <p>
+                            <motion.div className="space-y-4 text-lg md:text-xl text-romantic-light/90 leading-relaxed">
+                                <motion.p
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.8 }}
+                                >
                                     You make every day feel like Valentine's Day, my Sweetheart.
                                     You're my forever crush, my one true love! 💗
-                                </p>
-                                <p className="font-semibold">
+                                </motion.p>
+                                <motion.p
+                                    className="font-semibold"
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 1.1 }}
+                                >
                                     Here's to endless love letters, sweet chocolates, and
                                     infinite Valentine's Days together! 🍫🌹
-                                </p>
-                                <p className="text-2xl md:text-3xl font-handwritten text-gradient mt-6">
+                                </motion.p>
+                                <motion.p
+                                    className="text-2xl md:text-3xl font-handwritten text-gradient mt-6 block"
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 1.4, type: "spring" }}
+                                >
                                     XOXO - Love You More Every Day ❤️
-                                </p>
+                                </motion.p>
                             </motion.div>
 
                             <motion.div

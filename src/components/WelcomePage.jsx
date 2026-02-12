@@ -28,9 +28,35 @@ const WelcomePage = ({ onEnter }) => {
             transition={{ duration: 1 }}
             className="min-h-screen relative overflow-hidden flex items-center justify-center"
             style={{
-                background: 'linear-gradient(135deg, #1A0B1F 0%, #2D0A3D 50%, #1A0B1F 100%)',
+                background: 'linear-gradient(135deg, #2B1B47 0%, #3D2463 50%, #2B1B47 100%)',
             }}
         >
+            {/* Premium animated gradient overlay */}
+            <motion.div
+                animate={{
+                    background: [
+                        'radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%)',
+                        'radial-gradient(circle at 80% 50%, rgba(236, 72, 153, 0.15) 0%, transparent 50%)',
+                        'radial-gradient(circle at 50% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%)',
+                        'radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%)',
+                    ],
+                }}
+                transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                }}
+                className="absolute inset-0 z-0"
+            />
+
+            {/* Premium glow effect */}
+            <div
+                className="absolute inset-0 z-0"
+                style={{
+                    background: 'radial-gradient(ellipse at center, rgba(139, 92, 246, 0.08) 0%, transparent 70%)',
+                    filter: 'blur(60px)',
+                }}
+            />
             {/* 3D Glossy Pink Hearts on the left */}
             {hearts3D.map((heart) => (
                 <motion.div
@@ -128,13 +154,20 @@ const WelcomePage = ({ onEnter }) => {
                 />
             ))}
 
-            {/* Main content */}
+            {/* Main content with Glassmorphism */}
             <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl w-full">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 1 }}
-                    className="overflow-hidden"
+                    className="overflow-hidden rounded-3xl p-8 sm:p-12 md:p-16"
+                    style={{
+                        background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(236, 72, 153, 0.08))',
+                        backdropFilter: 'blur(20px)',
+                        WebkitBackdropFilter: 'blur(20px)',
+                        border: '1px solid rgba(255, 105, 180, 0.2)',
+                        boxShadow: '0 8px 32px 0 rgba(139, 92, 246, 0.2), inset 0 0 60px 0 rgba(255, 105, 180, 0.08)',
+                    }}
                 >
                     {/* HAPPY */}
                     <motion.h2
@@ -145,7 +178,7 @@ const WelcomePage = ({ onEnter }) => {
                             WebkitTextFillColor: 'transparent',
                             backgroundClip: 'text',
                             fontWeight: '300',
-                            filter: 'drop-shadow(0 0 20px rgba(255, 105, 180, 0.4))',
+                            filter: 'drop-shadow(0 0 30px rgba(255, 105, 180, 0.8)) drop-shadow(0 0 60px rgba(255, 105, 180, 0.4))',
                             wordBreak: 'keep-all',
                             overflowWrap: 'normal',
                         }}
@@ -163,7 +196,7 @@ const WelcomePage = ({ onEnter }) => {
                             backgroundClip: 'text',
                             fontWeight: '400',
                             fontStyle: 'italic',
-                            filter: 'drop-shadow(0 5px 25px rgba(255, 20, 147, 0.5))',
+                            filter: 'drop-shadow(0 8px 35px rgba(255, 20, 147, 0.9)) drop-shadow(0 0 80px rgba(236, 72, 153, 0.5))',
                             letterSpacing: '-0.02em',
                             wordBreak: 'keep-all',
                             overflowWrap: 'normal',
@@ -182,7 +215,7 @@ const WelcomePage = ({ onEnter }) => {
                             fontWeight: '300',
                             fontStyle: 'italic',
                             letterSpacing: '0.05em',
-                            filter: 'drop-shadow(0 0 20px rgba(255, 105, 180, 0.4))',
+                            filter: 'drop-shadow(0 0 30px rgba(255, 105, 180, 0.8)) drop-shadow(0 0 60px rgba(255, 105, 180, 0.4))',
                             wordBreak: 'keep-all',
                             overflowWrap: 'normal',
                         }}
@@ -204,9 +237,12 @@ const WelcomePage = ({ onEnter }) => {
                         onClick={onEnter}
                         className="px-6 sm:px-10 py-3 sm:py-4 rounded-full font-semibold inline-flex items-center gap-2 sm:gap-3 text-base sm:text-lg"
                         style={{
-                            background: 'linear-gradient(135deg, #FF1493 0%, #C71585 100%)',
+                            background: 'linear-gradient(135deg, rgba(255, 20, 147, 0.25), rgba(236, 72, 153, 0.2))',
+                            backdropFilter: 'blur(10px)',
+                            WebkitBackdropFilter: 'blur(10px)',
+                            border: '1px solid rgba(255, 105, 180, 0.4)',
                             color: '#FFFFFF',
-                            boxShadow: '0 10px 40px rgba(255, 20, 147, 0.5), 0 0 20px rgba(255, 105, 180, 0.4)',
+                            boxShadow: '0 10px 40px rgba(255, 20, 147, 0.5), 0 0 20px rgba(255, 105, 180, 0.4), inset 0 0 20px rgba(255, 182, 217, 0.15)',
                         }}
                     >
                         Enter

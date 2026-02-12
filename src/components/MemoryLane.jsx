@@ -69,61 +69,102 @@ const MemoryLane = () => {
         },
     }
 
+    // Continuous left-to-right movement animation
+    const floatingVariants = (index) => ({
+        animate: {
+            x: ['-100%', '100%'],
+            transition: {
+                x: {
+                    duration: 15 + (index * 2),
+                    repeat: Infinity,
+                    ease: 'linear',
+                    repeatType: 'loop',
+                },
+            },
+        },
+    })
+
     return (
-        <section className="py-20 px-4 md:px-8 relative">
-            <div className="max-w-6xl mx-auto">
+        <section className="py-20 relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 md:px-8 mb-12">
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
+                    className="text-center"
                 >
                     <h2 className="text-4xl md:text-6xl font-handwritten text-gradient mb-4">
-                        Our Love Story
+                        Our Love Album
                     </h2>
                     <p className="text-lg text-romantic-light/70">
                         Every moment is a Valentine with you 💖
                     </p>
                 </motion.div>
+            </div>
+
+            {/* Moving Album Strip */}
+            <div className="relative w-full overflow-hidden py-10">
+                <div className="absolute inset-y-0 left-0 w-20 md:w-40 bg-gradient-to-r from-[#1A0B1F] to-transparent z-10" />
+                <div className="absolute inset-y-0 right-0 w-20 md:w-40 bg-gradient-to-l from-[#1A0B1F] to-transparent z-10" />
 
                 <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: '-100px' }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    className="flex w-max"
+                    animate={{ x: ["0%", "-50%"] }}
+                    transition={{
+                        x: {
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            duration: 30,
+                            ease: "linear",
+                        },
+                    }}
                 >
-                    {memories.map((memory, index) => (
-                        <motion.div
-                            key={memory.id}
-                            variants={itemVariants}
-                            whileHover={{ scale: 1.05, rotate: index % 2 === 0 ? 2 : -2 }}
-                            className="glass-card overflow-hidden group cursor-pointer"
-                        >
-                            <div className="relative h-64 overflow-hidden">
-                                <img
-                                    src={memory.image}
-                                    alt={memory.title}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    {/* Set 1 */}
+                    <div className="flex gap-8 pr-8 shrink-0">
+                        {memories.map((memory, index) => (
+                            <MemoryCard key={`set1-${memory.id}`} memory={memory} />
+                        ))}
+                    </div>
 
-                                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <Calendar className="w-4 h-4" />
-                                        <span className="text-sm">{memory.date}</span>
-                                    </div>
-                                    <h3 className="text-xl font-semibold mb-1">{memory.title}</h3>
-                                    <p className="text-sm opacity-90">{memory.description}</p>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
+                    {/* Set 2 (Duplicate) */}
+                    <div className="flex gap-8 pr-8 shrink-0">
+                        {memories.map((memory, index) => (
+                            <MemoryCard key={`set2-${memory.id}`} memory={memory} />
+                        ))}
+                    </div>
                 </motion.div>
             </div>
         </section>
     )
 }
+
+// Extracted Card Component for cleaner code
+const MemoryCard = ({ memory }) => (
+    <motion.div
+        whileHover={{ scale: 1.05, filter: "brightness(1.1)", y: -10 }}
+        className="glass-card overflow-hidden group cursor-pointer w-[280px] sm:w-[350px] md:w-[400px] flex-shrink-0 border border-white/10"
+    >
+        <div className="relative h-[400px] sm:h-[450px] md:h-[500px] overflow-hidden">
+            <img
+                src={memory.image}
+                alt={memory.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-90" />
+
+            <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                <div className="flex items-center gap-2 mb-3 text-romantic-accent">
+                    <Calendar className="w-4 h-4" />
+                    <span className="text-sm font-medium tracking-wider">{memory.date}</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-serif mb-3 leading-tight">{memory.title}</h3>
+                <p className="text-sm sm:text-base text-gray-300 line-clamp-2 leading-relaxed font-light">{memory.description}</p>
+
+                <div className="h-1 w-12 bg-romantic-accent mt-4 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100" />
+            </div>
+        </div>
+    </motion.div>
+)
 
 export default MemoryLane
