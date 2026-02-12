@@ -129,23 +129,25 @@ const WelcomePage = ({ onEnter }) => {
             ))}
 
             {/* Main content */}
-            <div className="relative z-10 text-center px-4 max-w-4xl">
+            <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl w-full">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 1 }}
+                    className="overflow-hidden"
                 >
                     {/* HAPPY */}
                     <motion.h2
-                        className="text-3xl md:text-5xl mb-2 tracking-widest"
+                        className="text-2xl sm:text-3xl md:text-5xl mb-2 tracking-wide sm:tracking-widest"
                         style={{
                             background: 'linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFB6D9 100%)',
                             WebkitBackgroundClip: 'text',
                             WebkitTextFillColor: 'transparent',
                             backgroundClip: 'text',
                             fontWeight: '300',
-                            letterSpacing: '0.3em',
                             filter: 'drop-shadow(0 0 20px rgba(255, 105, 180, 0.4))',
+                            wordBreak: 'keep-all',
+                            overflowWrap: 'normal',
                         }}
                     >
                         HAPPY
@@ -153,7 +155,7 @@ const WelcomePage = ({ onEnter }) => {
 
                     {/* valentine's day */}
                     <motion.h1
-                        className="text-6xl md:text-8xl lg:text-9xl font-serif mb-8"
+                        className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-serif mb-6 sm:mb-8"
                         style={{
                             background: 'linear-gradient(135deg, #FF69B4 0%, #FF1493 30%, #FFB6D9 50%, #FF1493 70%, #C71585 100%)',
                             WebkitBackgroundClip: 'text',
@@ -163,13 +165,15 @@ const WelcomePage = ({ onEnter }) => {
                             fontStyle: 'italic',
                             filter: 'drop-shadow(0 5px 25px rgba(255, 20, 147, 0.5))',
                             letterSpacing: '-0.02em',
+                            wordBreak: 'keep-all',
+                            overflowWrap: 'normal',
                         }}
                     >
                         valentine's
                     </motion.h1>
 
                     <motion.h2
-                        className="text-5xl md:text-7xl lg:text-8xl font-serif"
+                        className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif"
                         style={{
                             background: 'linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFB6D9 100%)',
                             WebkitBackgroundClip: 'text',
@@ -179,6 +183,8 @@ const WelcomePage = ({ onEnter }) => {
                             fontStyle: 'italic',
                             letterSpacing: '0.05em',
                             filter: 'drop-shadow(0 0 20px rgba(255, 105, 180, 0.4))',
+                            wordBreak: 'keep-all',
+                            overflowWrap: 'normal',
                         }}
                     >
                         day
@@ -190,13 +196,13 @@ const WelcomePage = ({ onEnter }) => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.5, duration: 0.8 }}
-                    className="mt-16"
+                    className="mt-12 sm:mt-16"
                 >
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={onEnter}
-                        className="px-10 py-4 rounded-full font-semibold inline-flex items-center gap-3 text-lg"
+                        className="px-6 sm:px-10 py-3 sm:py-4 rounded-full font-semibold inline-flex items-center gap-2 sm:gap-3 text-base sm:text-lg"
                         style={{
                             background: 'linear-gradient(135deg, #FF1493 0%, #C71585 100%)',
                             color: '#FFFFFF',
@@ -208,7 +214,7 @@ const WelcomePage = ({ onEnter }) => {
                             animate={{ x: [0, 5, 0] }}
                             transition={{ duration: 1.5, repeat: Infinity }}
                         >
-                            <ArrowRight className="w-5 h-5" />
+                            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                         </motion.div>
                     </motion.button>
 
