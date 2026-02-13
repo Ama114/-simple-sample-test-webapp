@@ -2,6 +2,11 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Heart } from 'lucide-react'
 
+import memory6 from '../assets/memory6.jpg'
+import memory7 from '../assets/memory7.jpg'
+import memory8 from '../assets/memory8.jpg'
+import memory9 from '../assets/memory9.jpg'
+
 const ReasonsCarousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [direction, setDirection] = useState(0)
@@ -97,9 +102,61 @@ const ReasonsCarousel = () => {
         })
     }
 
+    const balloons = [
+        { id: 1, image: memory6, x: '5%', y: '20%', size: 120, delay: 0, rotate: -5 },
+        { id: 2, image: memory7, x: '15%', y: '60%', size: 100, delay: 1, rotate: 5 },
+        { id: 3, image: memory8, x: '80%', y: '15%', size: 130, delay: 2, rotate: 8 },
+        { id: 4, image: memory9, x: '85%', y: '55%', size: 110, delay: 0.5, rotate: -3 },
+    ]
+
     return (
-        <section className="py-20 px-4 relative min-h-screen flex items-center justify-center">
-            <div className="max-w-4xl mx-auto w-full">
+        <section className="py-20 px-4 relative min-h-screen flex items-center justify-center overflow-hidden">
+            {/* Floating Balloons */}
+            {balloons.map((balloon) => (
+                <motion.div
+                    key={balloon.id}
+                    initial={{ y: 0 }}
+                    animate={{ y: [-20, 20, -20] }}
+                    transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: balloon.delay
+                    }}
+                    className="absolute hidden lg:block z-0"
+                    style={{ left: balloon.x, top: balloon.y }}
+                >
+                    <motion.div
+                        whileHover={{ scale: 1.1, rotate: 0 }}
+                        drag
+                        dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+                        className="relative cursor-pointer"
+                    >
+                        {/* String */}
+                        <div className="absolute top-full left-1/2 w-[1px] h-[60px] bg-white/40 origin-top transform -translate-x-1/2" />
+
+                        {/* Balloon */}
+                        <div
+                            className="rounded-full border-4 border-white/20 overflow-hidden shadow-xl bg-white relative"
+                            style={{
+                                width: balloon.size,
+                                height: balloon.size,
+                                transform: `rotate(${balloon.rotate}deg)`
+                            }}
+                        >
+                            <img
+                                src={balloon.image}
+                                alt="Memory"
+                                className="w-full h-full object-cover"
+                            />
+                            {/* Shine effect */}
+                            <div className="absolute top-2 left-3 w-1/4 h-1/4 bg-gradient-to-br from-white/60 to-transparent rounded-full blur-[2px]" />
+                        </div>
+                    </motion.div>
+                </motion.div>
+            ))}
+
+            <div className="max-w-4xl mx-auto w-full relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}

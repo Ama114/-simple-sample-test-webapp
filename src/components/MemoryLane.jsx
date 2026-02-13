@@ -1,49 +1,88 @@
 import { motion } from 'framer-motion'
 import { Calendar } from 'lucide-react'
 
+import memory1 from '../assets/memory1.jpeg'
+import memory2 from '../assets/memory2.jpeg'
+import memory3 from '../assets/memory3.jpg'
+import memory4 from '../assets/memory4.jpg'
+import memory5 from '../assets/memory5.jpg'
+import memory6 from '../assets/memory6.jpg'
+import memory7 from '../assets/memory7.jpg'
+import memory8 from '../assets/memory8.jpg'
+import memory9 from '../assets/memory9.jpg'
+import memory10 from '../assets/memory10.jpg'
+import memory11 from '../assets/memory11.jpg'
+
+
+
+
+
 const MemoryLane = () => {
     const memories = [
         {
             id: 1,
-            image: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&q=80',
-            title: 'Cupid Struck Us',
-            date: 'Valentine 2024',
-            description: 'The day love found us 💘',
+            image: memory1,
+            description: '😍😍'
+             
         },
         {
             id: 2,
-            image: 'https://images.unsplash.com/photo-1529634313673-832b1e3b1bdb?w=800&q=80',
-            title: 'Sunset Romance',
-            date: 'March 2024',
-            description: 'Two hearts, one sunset 💗',
+            image: memory2,
+            description: '🥰🥰'
+          
         },
         {
             id: 3,
-            image: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80',
-            title: 'Sweet Moments',
-            date: 'May 2024',
-            description: 'Sweeter than chocolate 🍫',
+            image: memory3,
+            description: '❤️❤️'
+             
         },
         {
             id: 4,
-            image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80',
-            title: 'Love on Top',
-            date: 'July 2024',
-            description: 'You & Me, XOXO 💋',
+            image: memory4,
+            description: '😘😘'
         },
         {
             id: 5,
-            image: 'https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?w=800&q=80',
-            title: 'City of Love',
-            date: 'September 2024',
-            description: 'Be Mine Forever 💍',
+            image: memory5,
+            description: '😍😍',
         },
+
+
         {
             id: 6,
-            image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80',
-            title: 'Cuddle Weather',
-            date: 'November 2024',
-            description: 'My Forever Valentine 💌',
+            image: memory6,
+            description: '😍😍',
+        },
+
+        {
+            id: 7,
+            image: memory7,
+            description: '😍',
+        },
+
+        {
+            id: 8,
+            image: memory8,
+            description: '😍😍',
+        },
+
+        {
+            id: 9,
+            image: memory9,
+            description: '😍😍',
+        },
+
+        {
+            id: 10,
+            image: memory10,
+            description: '😍😍',
+        },
+
+        {
+            id: 11,
+            image: memory11,
+            description: '😍😍',
         },
     ]
 

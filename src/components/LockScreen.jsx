@@ -7,7 +7,7 @@ const LockScreen = ({ onUnlock }) => {
     const [error, setError] = useState(false)
     const [isSuccess, setIsSuccess] = useState(false)
 
-    const correctPasscode = '2024'
+    const correctPasscode = 'valentine'
 
     const handleSubmit = (e) => {
         e.preventDefault()
