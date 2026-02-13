@@ -123,7 +123,7 @@ const ReasonsCarousel = () => {
                         ease: "easeInOut",
                         delay: balloon.delay
                     }}
-                    className="absolute hidden lg:block z-0"
+                    className="absolute block z-0"
                     style={{ left: balloon.x, top: balloon.y }}
                 >
                     <motion.div

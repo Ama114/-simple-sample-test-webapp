@@ -173,10 +173,12 @@ const WelcomePage = ({ onEnter }) => {
                     <motion.h2
                         className="text-2xl sm:text-3xl md:text-5xl mb-2 tracking-wide sm:tracking-widest"
                         style={{
-                            color: '#FFFFFF',
-                            fontFamily: 'Outfit, sans-serif',
+                            background: 'linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFB6D9 100%)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text',
                             fontWeight: '300',
-                            filter: 'drop-shadow(0 0 10px rgba(255, 105, 180, 0.8)) drop-shadow(0 0 20px rgba(255, 105, 180, 0.4))',
+                            filter: 'drop-shadow(0 0 30px rgba(255, 105, 180, 0.8)) drop-shadow(0 0 60px rgba(255, 105, 180, 0.4))',
                             wordBreak: 'keep-all',
                             overflowWrap: 'normal',
                         }}
@@ -188,11 +190,13 @@ const WelcomePage = ({ onEnter }) => {
                     <motion.h1
                         className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-serif mb-6 sm:mb-8"
                         style={{
-                            color: '#FF69B4',
+                            background: 'linear-gradient(135deg, #FF69B4 0%, #FF1493 30%, #FFB6D9 50%, #FF1493 70%, #C71585 100%)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text',
                             fontWeight: '400',
                             fontStyle: 'italic',
-                            textShadow: '0 0 20px rgba(255, 192, 203, 0.6)',
-                            filter: 'drop-shadow(0 0 10px rgba(236, 72, 153, 0.5))',
+                            filter: 'drop-shadow(0 8px 35px rgba(255, 20, 147, 0.9)) drop-shadow(0 0 80px rgba(236, 72, 153, 0.5))',
                             letterSpacing: '-0.02em',
                             wordBreak: 'keep-all',
                             overflowWrap: 'normal',
@@ -204,12 +208,14 @@ const WelcomePage = ({ onEnter }) => {
                     <motion.h2
                         className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif"
                         style={{
-                            color: '#FFFFFF',
-                            fontFamily: 'Outfit, sans-serif',
+                            background: 'linear-gradient(135deg, #FFB6D9 0%, #FF69B4 50%, #FFB6D9 100%)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text',
                             fontWeight: '300',
                             fontStyle: 'italic',
                             letterSpacing: '0.05em',
-                            filter: 'drop-shadow(0 0 10px rgba(255, 105, 180, 0.8)) drop-shadow(0 0 20px rgba(255, 105, 180, 0.4))',
+                            filter: 'drop-shadow(0 0 30px rgba(255, 105, 180, 0.8)) drop-shadow(0 0 60px rgba(255, 105, 180, 0.4))',
                             wordBreak: 'keep-all',
                             overflowWrap: 'normal',
                         }}
